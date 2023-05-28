@@ -6,19 +6,18 @@ struct produto {
     float preco_do_produto;
     int quantidade_do_produto;
     char indice;
-}
+};
 
-;int main () {
+int main () {
+
     produto produtos [5] [6];
 
-    for (int i = 1; i < 2; i++) {
-        for (int j = 1; j < 2; j++) {
-            produtos[i] [j].nome_produto = "Vinicius";
-            produtos[i] [j].preco_do_produto = 10;
-            produtos[i] [j].quantidade_do_produto = 5;
-        }
-    }
+    produtos[1] [1].nome_produto = "Vinicius";
+    produtos[1] [1].preco_do_produto = 10.00;
+    produtos[1] [1].quantidade_do_produto = 5;
+    
+    cout << "Nome do Produto:" << produtos[1] [1].nome_produto << "\n Preço: " << produtos[1] [1].preco_do_produto << 
+    " R$" << "\n Quantidade: " << produtos[1] [1].quantidade_do_produto;
+}
 
-    cout << produtos;
-} 
     
