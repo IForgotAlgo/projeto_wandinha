@@ -69,7 +69,6 @@ int main () {
     produtos[1] [6].quantidade_do_produto = 10;
     produtos[1] [6].indice = 6;
     
-    cout << "Bom \t Dia";
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
     cout << left << setw(20) << produtos[1] [1].nome_produto << setw(20) << produtos[1] [2].nome_produto << setw(20) << produtos[1] [3].nome_produto << 
                     setw(20) << produtos[1] [4].nome_produto << setw(20) << produtos[1] [5].nome_produto << setw(20) << produtos[1] [6].nome_produto << endl;
@@ -95,13 +94,19 @@ int main () {
             cout << "\nPagamento Efetivado \nObrigado! :3 \nOlha o Produto CAINDO \n  // " << endl; 
 
         } else
-            forma = (dinheiro, troco);
-            
-            if (forma == 0) {
-                cout << "Sem Troco! \n Olha O Brownie CAINDO //";    
-            }
-            
-
+            cout << "Insira a Nota: (Apenas Notas de 5.00R$; 10.00R$; 20.00R$ e 50.00R$ são Permitidas): " << "\nInsira a Nota >> ";
+            cin >> dinheiro;
+                if (dinheiro == 5) {
+                    cout << "Sem Troco! \n Olha O Brownie CAINDO //";
+                } else if (dinheiro == 10) {
+                    dinheiro = dinheiro - 5;
+                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais)";
+                } else if (dinheiro == 20) {
+                    dinheiro = dinheiro - 5;
+                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais e 10 Reais)";
+                } else
+                    dinheiro = dinheiro - 5;
+                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (20 Reias 2x e 5 Reais)";
 
         break;
     }
