@@ -3,6 +3,25 @@
 using namespace std;
 
 /*Estrutura do Produto pode ser editada adicionando mais informações*/
+double forma_pagamento_dinheiro (double dinheiro, double troco) {
+   
+    cout << "Insira a Nota: (Apenas Notas de 5.00R$; 10.00R$; 20.00R$ e 50.00R$ são Permitidas): " << "\nInsira a Nota >> ";
+    cin >> dinheiro;
+    
+    if (dinheiro == 5) {
+        cout << "Sem Troco! \n Olha O Brownie CAINDO //";
+    } else if (dinheiro == 10) {
+        dinheiro = troco + (dinheiro - 5);
+        cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais)";
+    } else if (dinheiro == 20) {
+        dinheiro = troco + (dinheiro - 5);
+        cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais e 10 Reais)";
+    } else
+    dinheiro = troco + (dinheiro - 5);
+    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (20 Reias 2x e 5 Reais)";
+    return troco;
+}
+
 struct produto {
     string nome_produto;
     double preco_do_produto;
@@ -15,6 +34,7 @@ int main () {
     int forma;
     int dinheiro;
     int total;
+    int troco;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
     produto produtos [5] [6];
@@ -75,19 +95,14 @@ int main () {
             cout << "\nPagamento Efetivado \nObrigado! :3 \nOlha o Produto CAINDO \n  // " << endl; 
 
         } else
-          cout << "Insira a Nota: (Apenas Notas de 5.00R$; 10.00R$; 20.00R$ e 50.00R$ são Permitidas): " << "\nInsira a Nota >> ";
-          cin >> dinheiro;
-            if (dinheiro == 5) {
-                cout << "Sem Troco! \n Olha O Brownie CAINDO //";
-            } else if (dinheiro == 10) {
-                dinheiro = dinheiro - 5;
-                cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais)";
-            } else if (dinheiro == 20) {
-                dinheiro = dinheiro - 5;
-                cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais e 10 Reais)";
-            } else
-                dinheiro = dinheiro - 5;
-                cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (20 Reias 2x e 5 Reais)";
+            forma = (dinheiro, troco);
+            
+            if (forma == 0) {
+                cout << "Sem Troco! \n Olha O Brownie CAINDO //";    
+            }
+            
+
+
         break;
     }
 
