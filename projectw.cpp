@@ -3,23 +3,18 @@
 using namespace std;
 
 /*Estrutura do Produto pode ser editada adicionando mais informações*/
-double forma_pagamento_dinheiro (double dinheiro, double troco) {
-   
-    cout << "Insira a Nota: (Apenas Notas de 5.00R$; 10.00R$; 20.00R$ e 50.00R$ são Permitidas): " << "\nInsira a Nota >> ";
-    cin >> dinheiro;
+int forma_pagamento (int dinheiro, int troco, int qtdEscolha, string escolha) {
+   cout << "Qual a forma de Pagamento? \nA) Dinheiro B) Pix: ";
+   cin >> escolha;
+
+   if (escolha == A) {
+
+   }
     
-    if (dinheiro == 5) {
-        cout << "Sem Troco! \n Olha O Brownie CAINDO //";
-    } else if (dinheiro == 10) {
-        dinheiro = troco + (dinheiro - 5);
-        cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais)";
-    } else if (dinheiro == 20) {
-        dinheiro = troco + (dinheiro - 5);
-        cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais e 10 Reais)";
-    } else
-    dinheiro = troco + (dinheiro - 5);
-    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (20 Reias 2x e 5 Reais)";
-    return troco;
+}
+
+double getTroco(double dinheiro, double valor) {
+    return dinheiro - valor;
 }
 
 struct produto {
@@ -31,6 +26,7 @@ struct produto {
 
 int main () {
     int escolha;
+    int qtdEscolha;
     int forma;
     int dinheiro;
     int total;
@@ -69,6 +65,7 @@ int main () {
     produtos[1] [6].quantidade_do_produto = 10;
     produtos[1] [6].indice = 6;
     
+
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
     cout << left << setw(20) << produtos[1] [1].nome_produto << setw(20) << produtos[1] [2].nome_produto << setw(20) << produtos[1] [3].nome_produto << 
                     setw(20) << produtos[1] [4].nome_produto << setw(20) << produtos[1] [5].nome_produto << setw(20) << produtos[1] [6].nome_produto << endl;
@@ -82,34 +79,20 @@ int main () {
     cout << "Escolha um Produto Digitando o Código Abaixo do Valor: ";
     cin >> escolha;
 
-    /*Agora Vem a Parte da Escolha do Nosso Querido Usuário*/
-    switch (escolha) {
-        case 1:
-        cout << "Forma de Pagamento; (1)Pix Ou (2)Dinheiro: ";
-        cin >> forma;
-        total = total + 5;
+    cout << "Informe a quantidade:  ";
+    cin >> qtdEscolha;
 
-        if (forma == 1) {
-            cout << "<QR Code>" << endl;
-            cout << "\nPagamento Efetivado \nObrigado! :3 \nOlha o Produto CAINDO \n  // " << endl; 
+    double valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
+    cout << "O total a pagar é: " << valor_total;
 
-        } else
-            cout << "Insira a Nota: (Apenas Notas de 5.00R$; 10.00R$; 20.00R$ e 50.00R$ são Permitidas): " << "\nInsira a Nota >> ";
-            cin >> dinheiro;
-                if (dinheiro == 5) {
-                    cout << "Sem Troco! \n Olha O Brownie CAINDO //";
-                } else if (dinheiro == 10) {
-                    dinheiro = dinheiro - 5;
-                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais)";
-                } else if (dinheiro == 20) {
-                    dinheiro = dinheiro - 5;
-                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (5 Reais e 10 Reais)";
-                } else
-                    dinheiro = dinheiro - 5;
-                    cout << "Aqui seu troco: " << dinheiro << "R$ \nObrigado pela preferencia \nDINDIN VOLTANO (20 Reias 2x e 5 Reais)";
+    /*Colocar Forma de Pagamento!*/
 
-        break;
-    }
+    cout << "Entre com o dinheiro: ";
+    double dinheiro;
+    cin >> dinheiro;
+    double troco = getTroco(dinheiro, valor_total);
+
+
 
 
 return 0;
