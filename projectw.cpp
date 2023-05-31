@@ -2,21 +2,11 @@
 #include <iomanip>
 using namespace std;
 
-/*Estrutura do Produto pode ser editada adicionando mais informações*/
-int forma_pagamento (int dinheiro, int troco, int qtdEscolha, string escolha) {
-   cout << "Qual a forma de Pagamento? \nA) Dinheiro B) Pix: ";
-   cin >> escolha;
-
-   if (escolha == A) {
-
-   }
-    
-}
-
 double getTroco(double dinheiro, double valor) {
     return dinheiro - valor;
 }
 
+/*Estrutura do Produto pode ser editada adicionando mais informações*/
 struct produto {
     string nome_produto;
     double preco_do_produto;
@@ -26,11 +16,9 @@ struct produto {
 
 int main () {
     int escolha;
-    int qtdEscolha;
-    int forma;
-    int dinheiro;
-    int total;
-    int troco;
+    double qtdEscolha;
+    double valor_total;
+    char escolha_forma_pagamento;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
     produto produtos [5] [6];
@@ -82,10 +70,18 @@ int main () {
     cout << "Informe a quantidade:  ";
     cin >> qtdEscolha;
 
-    double valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
+    valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
     cout << "O total a pagar é: " << valor_total;
 
     /*Colocar Forma de Pagamento!*/
+    cout << "Qual a Forma de Pagamento? \nA) Dindin \nB)Cartão Crédito ou Débito \nC)Pix ";
+    cin >> escolha_forma_pagamento;
+
+    if (escolha_forma_pagamento == 'B') {
+        cout << "Insira ou Aproxime o Cartão \nCrédito ou Débito? \nPagamento Realizado \nProduto Caindo";
+    } else if {
+        cout << "QR Code> \nPagamento Efetuado";
+    }
 
     cout << "Entre com o dinheiro: ";
     double dinheiro;
