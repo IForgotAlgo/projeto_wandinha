@@ -2,7 +2,9 @@
 #include <iomanip>
 using namespace std;
 
-double getTroco(double dinheiro, double valor) {
+
+
+double Vem_Troco(double dinheiro, double valor) {
     return dinheiro - valor;
 }
 
@@ -16,8 +18,11 @@ struct produto {
 
 int main () {
     int escolha;
-    double qtdEscolha;
+    int qtdEscolha;
+    int senha;
     double valor_total;
+    double dinheiro;
+    double troco;
     char escolha_forma_pagamento;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
@@ -64,29 +69,60 @@ int main () {
     cout << left << setw(20) << produtos[1] [1].indice << setw(20) << produtos[1] [2].indice << setw(20) << produtos[1] [3].indice <<
                     setw(20) << produtos[1] [4].indice << setw(20) << produtos[1] [5].indice << setw(20) << produtos[1] [6].indice << endl;
     
-    cout << "Escolha um Produto Digitando o Código Abaixo do Valor: ";
-    cin >> escolha;
+        do {
+        cout << "Escolha um Produto Digitando o Código Abaixo do Valor: ";
+        cin >> escolha;
+        
+        if (escolha != 159753 & (escolha <= 0 or escolha > 6)){
+            cout << "Produto Invalido. Tente Novamente\n";
+        }
+        } while (escolha != 159753 & (escolha <= 0 or escolha > 6));
 
-    cout << "Informe a quantidade:  ";
+    /* Transformar isso acima como função /\ */;
+
+    if (escolha == 159753) {
+        cout << "Digite a Senha para entrar no: ";
+        cin >> senha;
+        if (senha == 98634648) {
+            /*Puxar função ADMIN (Inserir 1 Chama função respectiva e assim continuamente)*/
+            /*Se tiver 3 erros o Sistema: Usar Do While com o Contador pra verificar a senha
+            caso seja erro 3 vezes voltar ao Modo User*/
+        }
+    }
+
+    cout << "Informe a Quantidade:  ";
     cin >> qtdEscolha;
 
     valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
-    cout << "O total a pagar é: " << valor_total;
+    cout << "O total a pagar é: R$" << valor_total;
 
     /*Colocar Forma de Pagamento!*/
-    cout << "Qual a Forma de Pagamento? \nA) Dindin \nB)Cartão Crédito ou Débito \nC)Pix ";
+    cout << "\nQual a Forma de Pagamento? \n'A') Dindin\n'B') Cartão Crédito ou Débito\n'C') Pix ";
     cin >> escolha_forma_pagamento;
 
     if (escolha_forma_pagamento == 'B') {
-        cout << "Insira ou Aproxime o Cartão \nCrédito ou Débito? \nPagamento Realizado \nProduto Caindo";
-    } else if {
-        cout << "QR Code> \nPagamento Efetuado";
-    }
+        cout << "\nInsira ou Aproxime o Cartão \nCrédito ou Débito?\nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado";
+    } else if (escolha_forma_pagamento == 'C'){
+        cout << "\n<QR Code> \nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3";
+    } else {
 
-    cout << "Entre com o dinheiro: ";
-    double dinheiro;
-    cin >> dinheiro;
-    double troco = getTroco(dinheiro, valor_total);
+        do {
+            cout << "Insira o Dinheiro na Maquina: (Notas Compativeis: R$5,00 e R$10,00 e R$20,00 e R$50,00): ";
+            cin >> dinheiro;
+            troco = Vem_Troco(dinheiro, valor_total);
+
+            if (troco < 0) {
+                cout << "Opa Faltou DinDin\nRetornando Nota Inserida, Tente Novamente com o Valor Correto ou Maior.\n";
+            }
+        } while (troco < 0);
+        /* Transformar isso acima como função /\ */;
+
+        if (troco != 0) {
+        cout << "Aqui seu troco: " << troco << "\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3";
+        }
+
+        cout << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3";
+    }
 
 
 
