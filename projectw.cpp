@@ -2,18 +2,24 @@
 #include <iomanip>
 using namespace std;
 
+float repor(int repondo, int quantidade) {
+    cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
+    cin >> repondo;
+
+    cout << "\nQuantas Unidades? ";
+    cin >> quantidade;
+
+return quantidade, repondo;
+}
+
 float modo_adm(int acao) {
     cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
-    cout << "\n O que deseja fazer? ";
+    cout << "\nO que deseja fazer? ";
 
-    cout << "\n1) Repor Produtos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Faturamentos";
+    cout << "\n1) Faturamentos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Repor Produtos\n";
     cin >> acao;
 
-    switch (acao)
-    {
-        case 1:
-
-    }
+return acao;
 }
 
 double Vem_Troco(double dinheiro, double valor) {
@@ -29,10 +35,16 @@ struct produto {
 };
 
 int main () {
+
     int escolha;
     int qtdEscolha;
     int senha;
     int qtd;
+    int acao;
+    int total_vendido;
+    int tota_ira_faturar;
+    int reposicao;
+    int un;
     double valor_total;
     double dinheiro;
     double troco;
@@ -71,6 +83,9 @@ int main () {
     produtos[1] [6].quantidade_do_produto = 10;
     produtos[1] [6].indice = 6;
     
+    for (int i = 1; i < 6; i++) {
+       tota_ira_faturar = produtos[1][i].preco_do_produto + tota_ira_faturar;
+    }
 
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
     cout << left << setw(20) << produtos[1] [1].nome_produto << setw(20) << produtos[1] [2].nome_produto << setw(20) << produtos[1] [3].nome_produto << 
@@ -99,14 +114,47 @@ int main () {
     do {
         if (escolha == 159753) {
             cout << "Digite a Senha para entrar no: ";
-            cin >> senha;
-            if (senha == 98634648) {
-            }
+            cin >> senha;           
         }
     } while (senha != 98634648);
 
+    acao = modo_adm(senha);
+
+    switch (acao)
+    {
+    case 1:
+        cout << "\nO Total Faturado eh: " << total_vendido;
+        cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << tota_ira_faturar; 
+        system("pause");
+        break;
+
+    case 2:
+        cout << "\nO Total de Quantidade de Produtos eh: ";
+        for (int i = 1; i < 6; i++) {
+            cout << "\n" << produtos[1] [i].nome_produto;
+            cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
+        }
+        system("pause");
+        break;
+    
+    case 3:
+
+        do {
+            acao = repor(reposicao, un);
+            produtos[1] [un].quantidade_do_produto = produtos[1] [un].quantidade_do_produto + reposicao;
+
+            cout << "\nO Produto " << produtos[1] [un].nome_produto << "Foi reposto " << reposicao << "Un";
+            cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '1')";
+            cin >> escolha;
+        } while (escolha == 1); 
+        system("pause");
+        break; 
+    }
+
     cout << "Informe a Quantidade:  ";
     cin >> qtdEscolha;
+
+    produtos[1][escolha].quantidade_do_produto = produtos[1][escolha].quantidade_do_produto - qtdEscolha;
 
     valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
     cout << "O total a pagar eh: R$" << valor_total;
@@ -117,8 +165,10 @@ int main () {
 
     if (escolha_forma_pagamento == 'B') {
         cout << "\nInsira ou Aproxime o Cartao \nCredito ou Debito?\nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
+        total_vendido = (total_vendido + valor_total) + total_vendido;
     } else if (escolha_forma_pagamento == 'C'){
         cout << "\n<QR Code> \nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
+        total_vendido = (total_vendido + valor_total) + total_vendido;
     } else {
 
         do {
@@ -136,7 +186,7 @@ int main () {
                 cout << "Opa Faltou DinDin\nRetornando Nota Inserida, Tente Novamente com o Valor Correto ou Maior.\n";
             }
         } while (troco < 0);
-        /* Transformar isso acima como função /\ */;
+        total_vendido = (total_vendido + valor_total) + total_vendido;
 
         if (troco != 0) {
             cout << "Aqui seu troco: " << troco << "\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
