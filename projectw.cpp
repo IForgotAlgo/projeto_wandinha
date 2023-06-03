@@ -14,6 +14,7 @@ float modo_adm(int acao) {
         case 1:
 
     }
+}
 
 double Vem_Troco(double dinheiro, double valor) {
     return dinheiro - valor;
