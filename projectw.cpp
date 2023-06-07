@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 using namespace std;
 
 float repor(int repondo, int quantidade) {
