@@ -3,14 +3,14 @@
 #include <cstdlib>
 using namespace std;
 
-float repor(int repondo, int quantidade) {
-    cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
-    cin >> repondo;
+float modo_adm(int acao) {
+    cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
+    cout << "\nO que deseja fazer? ";
 
-    cout << "\nQuantas Unidades? ";
-    cin >> quantidade;
+    cout << "\n1) Faturamentos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Repor Produtos\n";
+    cin >> acao;
 
-return quantidade, repondo;
+return acao;
 }
 
 float modo_adm(int acao) {
@@ -42,17 +42,18 @@ int main () {
     int senha;
     int qtd;
     int acao;
-    int total_vendido;
-    int tota_ira_faturar;
-    int reposicao;
-    int un;
+    int total_vendido = 0;
+    int total_ira_faturar;
+    int reposicao = 0;
+    int un = 0;
+    int produto_repondo;
     double valor_total;
     double dinheiro;
     double troco;
     char escolha_forma_pagamento;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
-    produto produtos [5] [6];
+    produto produtos [5] [7];
 
     produtos[1] [1].nome_produto = "Brownie";
     produtos[1] [1].preco_do_produto = 5.00;
@@ -85,7 +86,8 @@ int main () {
     produtos[1] [6].indice = 6;
     
     for (int i = 1; i < 6; i++) {
-       tota_ira_faturar = produtos[1][i].preco_do_produto + tota_ira_faturar;
+       total_ira_faturar += (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
+       i++;
     }
 
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
@@ -102,10 +104,10 @@ int main () {
         cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
         cin >> escolha;
         
-        if (escolha != 159753 & (escolha <= 0 or escolha > 6)){
+        if (escolha != 159753 && (escolha <= 0 or escolha > 6)) {
             cout << "Produto Invalido. Tente Novamente\n";
         }
-    } while (escolha != 159753 & (escolha <= 0 or escolha > 6));
+    } while (escolha != 159753 && (escolha <= 0 or escolha > 6));
 
     /*Puxar função ADMIN (Inserir 1 Chama função respectiva e assim continuamente)*/;
     /*Se tiver 3 erros o Sistema: Usar Do While com o Contador pra verificar a senha
@@ -125,7 +127,7 @@ int main () {
     {
     case 1:
         cout << "\nO Total Faturado eh: " << total_vendido;
-        cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << tota_ira_faturar; 
+        cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << total_ira_faturar << "\n"; 
         system("pause");
         break;
 
@@ -141,14 +143,22 @@ int main () {
     case 3:
 
         do {
-            acao = repor(reposicao, un);
-            produtos[1] [un].quantidade_do_produto = produtos[1] [un].quantidade_do_produto + reposicao;
+            cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
+            cin >> produto_repondo;
 
-            cout << "\nO Produto " << produtos[1] [un].nome_produto << "Foi reposto " << reposicao << "Un";
+            produtos[1] [produto_repondo].nome_produto;
+
+            cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto;
+            cin >> reposicao;
+
+            produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
+
+            cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << "Foi reposto " << reposicao << "Un";
             cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '1')";
             cin >> escolha;
         } while (escolha == 1); 
         system("pause");
+        
         break; 
     }
 
