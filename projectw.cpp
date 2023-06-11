@@ -13,7 +13,7 @@ float modo_adm(int acao) {
 return acao;
 }
 
-float modo_adm(int acao) {
+float modo (int acao) {
     cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
     cout << "\nO que deseja fazer? ";
 
@@ -45,7 +45,6 @@ int main () {
     int total_vendido = 0;
     int total_ira_faturar;
     int reposicao = 0;
-    int un = 0;
     int produto_repondo;
     double valor_total;
     double dinheiro;
@@ -100,14 +99,14 @@ int main () {
     cout << left << setw(20) << produtos[1] [1].indice << setw(20) << produtos[1] [2].indice << setw(20) << produtos[1] [3].indice <<
                     setw(20) << produtos[1] [4].indice << setw(20) << produtos[1] [5].indice << setw(20) << produtos[1] [6].indice << endl;
     
-    do {
+    while (escolha != 159753 && (escolha <= 0 or escolha > 6)){
         cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
         cin >> escolha;
         
         if (escolha != 159753 && (escolha <= 0 or escolha > 6)) {
             cout << "Produto Invalido. Tente Novamente\n";
         }
-    } while (escolha != 159753 && (escolha <= 0 or escolha > 6));
+    }
 
     /*Puxar função ADMIN (Inserir 1 Chama função respectiva e assim continuamente)*/;
     /*Se tiver 3 erros o Sistema: Usar Do While com o Contador pra verificar a senha
@@ -121,7 +120,7 @@ int main () {
         }
     } while (senha != 98634648);
 
-    acao = modo_adm(senha);
+    acao = modo(senha);
 
     switch (acao)
     {
