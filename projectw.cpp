@@ -4,7 +4,7 @@
 using namespace std;
 
 float modo(int acao) {
-    cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
+    cout << "\nBem Vindo ao Modo Administrador da WandinhaMachine! ";
     cout << "\nO que deseja fazer? ";
 
     cout << "\n1) Faturamentos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Repor Produtos\n";
@@ -113,18 +113,19 @@ int main () {
 
         } else {
             do {
-                cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
+                cout << "\nDeseja Repor Qual Produto (Digite o Codigo)? ";
                 cin >> produto_repondo;
 
                 produtos[1] [produto_repondo].nome_produto;
 
-                cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto;
+                cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto << "\n";
                 cin >> reposicao;
 
                 produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
 
-                cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << "Foi reposto " << reposicao << "Un";
-                cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '1')";
+                cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << " Foi reposto " << reposicao << "Un";
+                cout << "\nQuantidade Anterior: " << produtos[1] [produto_repondo].quantidade_do_produto - reposicao << "\nQuantidade Atual " << produtos[1] [produto_repondo].quantidade_do_produto;
+                cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '2')";
                 cin >> escolha;
             } while (escolha == 1);
         
