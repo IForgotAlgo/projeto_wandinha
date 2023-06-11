@@ -3,14 +3,15 @@
 #include <cstdlib>
 using namespace std;
 
-float modo(int acao) {
+int modo() {
+    int senha;
     cout << "\nBem Vindo ao Modo Administrador da WandinhaMachine! ";
     cout << "\nO que deseja fazer? ";
 
-    cout << "\n1) Faturamentos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Repor Produtos\n";
-    cin >> acao;
+    cout << "\n'1') Faturamentos \n'2') Ver Inventario Produtos contendo suas Quantidades em Un \n'3') Repor Produtos\n";
+    cin >> senha;
 
-return acao;
+    return senha;
 }
 
 double Vem_Troco(double dinheiro, double valor) {
@@ -29,10 +30,10 @@ int main () {
 
     int escolha;
     int qtdEscolha;
-    int senha = 0;
+    int senha;
     int qtd;
-    int total_vendido = 0;
     int acao;
+    int total_vendido = 0;
     int total_ira_faturar = 0;
     int reposicao = 0;
     int produto_repondo;
@@ -76,7 +77,6 @@ int main () {
     
     for (int i = 1; i < 6; i++) {
         total_ira_faturar += (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
-        i++;
     }
 
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
@@ -96,20 +96,19 @@ int main () {
     if (escolha == 159753) {
         cout << "Entrando no Menu Secreto";
 
-        acao = modo(senha);
+        senha = modo();
 
         if (senha == 1) {
             cout << "\nO Total Faturado eh: " << total_vendido;
             cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << total_ira_faturar << "\n"; 
-            system("pause");
 
         } else if (senha == 2) {
             cout << "\nO Total de Quantidade de Produtos eh: ";
+
             for (int i = 1; i < 6; i++) {
                 cout << "\n" << produtos[1] [i].nome_produto;
                 cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
             }
-            system("pause");
 
         } else {
             do {
@@ -129,7 +128,6 @@ int main () {
                 cin >> escolha;
             } while (escolha == 1);
         
-        system("pause");
         }
     }
 
