@@ -3,17 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-float modo_adm(int acao) {
-    cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
-    cout << "\nO que deseja fazer? ";
-
-    cout << "\n1) Faturamentos \n2) Ver Inventario Produtos contendo suas Quantidades em Un \n3) Repor Produtos\n";
-    cin >> acao;
-
-return acao;
-}
-
-float modo (int acao) {
+float modo(int acao) {
     cout << "Bem Vindo ao Modo Administrador da WandinhaMachine! ";
     cout << "\nO que deseja fazer? ";
 
@@ -39,11 +29,11 @@ int main () {
 
     int escolha;
     int qtdEscolha;
-    int senha;
+    int senha = 0;
     int qtd;
-    int acao;
     int total_vendido = 0;
-    int total_ira_faturar;
+    int acao;
+    int total_ira_faturar = 0;
     int reposicao = 0;
     int produto_repondo;
     double valor_total;
@@ -85,8 +75,8 @@ int main () {
     produtos[1] [6].indice = 6;
     
     for (int i = 1; i < 6; i++) {
-       total_ira_faturar += (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
-       i++;
+        total_ira_faturar += (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
+        i++;
     }
 
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
@@ -99,66 +89,47 @@ int main () {
     cout << left << setw(20) << produtos[1] [1].indice << setw(20) << produtos[1] [2].indice << setw(20) << produtos[1] [3].indice <<
                     setw(20) << produtos[1] [4].indice << setw(20) << produtos[1] [5].indice << setw(20) << produtos[1] [6].indice << endl;
     
-    while (escolha != 159753 && (escolha <= 0 or escolha > 6)){
-        cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
-        cin >> escolha;
-        
-        if (escolha != 159753 && (escolha <= 0 or escolha > 6)) {
-            cout << "Produto Invalido. Tente Novamente\n";
-        }
-    }
-
-    /*Puxar função ADMIN (Inserir 1 Chama função respectiva e assim continuamente)*/;
-    /*Se tiver 3 erros o Sistema: Usar Do While com o Contador pra verificar a senha
-    caso seja erro 3 vezes voltar ao Modo User*/;
-    /* Transformar isso acima como função /\ */;
     
-    do {
-        if (escolha == 159753) {
-            cout << "Digite a Senha para entrar no: ";
-            cin >> senha;           
-        }
-    } while (senha != 98634648);
-
-    acao = modo(senha);
-
-    switch (acao)
-    {
-    case 1:
-        cout << "\nO Total Faturado eh: " << total_vendido;
-        cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << total_ira_faturar << "\n"; 
-        system("pause");
-        break;
-
-    case 2:
-        cout << "\nO Total de Quantidade de Produtos eh: ";
-        for (int i = 1; i < 6; i++) {
-            cout << "\n" << produtos[1] [i].nome_produto;
-            cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
-        }
-        system("pause");
-        break;
-    
-    case 3:
-
-        do {
-            cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
-            cin >> produto_repondo;
-
-            produtos[1] [produto_repondo].nome_produto;
-
-            cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto;
-            cin >> reposicao;
-
-            produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
-
-            cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << "Foi reposto " << reposicao << "Un";
-            cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '1')";
-            cin >> escolha;
-        } while (escolha == 1); 
-        system("pause");
+    cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
+    cin >> escolha;
         
-        break; 
+    if (escolha == 159753) {
+        cout << "Entrando no Menu Secreto";
+
+        acao = modo(senha);
+
+        if (senha == 1) {
+            cout << "\nO Total Faturado eh: " << total_vendido;
+            cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << total_ira_faturar << "\n"; 
+            system("pause");
+
+        } else if (senha == 2) {
+            cout << "\nO Total de Quantidade de Produtos eh: ";
+            for (int i = 1; i < 6; i++) {
+                cout << "\n" << produtos[1] [i].nome_produto;
+                cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
+            }
+            system("pause");
+
+        } else {
+            do {
+                cout << "\nDeseja Repor Qual Produto (Digite o Código)? ";
+                cin >> produto_repondo;
+
+                produtos[1] [produto_repondo].nome_produto;
+
+                cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto;
+                cin >> reposicao;
+
+                produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
+
+                cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << "Foi reposto " << reposicao << "Un";
+                cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '1')";
+                cin >> escolha;
+            } while (escolha == 1);
+        
+        system("pause");
+        }
     }
 
     cout << "Informe a Quantidade:  ";
@@ -170,6 +141,7 @@ int main () {
     cout << "O total a pagar eh: R$" << valor_total;
 
     /*Colocar Forma de Pagamento!*/
+
     cout << "\nQual a Forma de Pagamento? \n'A') Dindin\n'B') Cartao Credito ou Debito\n'C') Pix ";
     cin >> escolha_forma_pagamento;
 
@@ -185,14 +157,15 @@ int main () {
             cout << "Insira o Dinheiro na Maquina: (Notas Compativeis: R$5,00 e R$10,00 e R$20,00 e R$50,00 e R$100,00): ";
             cin >> dinheiro;
 
-            cout << "\nQuantas Cédulas?: ";
+            cout << "\nQuantas Cedulas?: ";
             cin >> qtd;
             
             dinheiro = (qtd * dinheiro);
 
             troco = Vem_Troco(dinheiro, valor_total);
 
-            if (troco < 0) {
+            if (troco < 0
+            ) {
                 cout << "Opa Faltou DinDin\nRetornando Nota Inserida, Tente Novamente com o Valor Correto ou Maior.\n";
             }
         } while (troco < 0);
@@ -200,6 +173,7 @@ int main () {
 
         if (troco != 0) {
             cout << "Aqui seu troco: " << troco << "\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
+            system ("pause");
         }
 
         cout << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
