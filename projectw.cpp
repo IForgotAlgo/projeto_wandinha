@@ -173,8 +173,7 @@ int main () {
 
             troco = Vem_Troco(dinheiro, valor_total);
 
-            if (troco < 0
-            ) {
+            if (troco < 0) {
                 cout << "Opa Faltou DinDin\nRetornando Nota Inserida, Tente Novamente com o Valor Correto ou Maior.\n";
             }
         } while (troco < 0);
