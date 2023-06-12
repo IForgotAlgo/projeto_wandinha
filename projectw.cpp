@@ -182,6 +182,7 @@ int main () {
         if (troco != 0) {
             cout << "Aqui seu troco: " << troco << "\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
             system ("pause");
+            exit (0);
         }
 
         cout << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
