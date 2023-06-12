@@ -28,11 +28,18 @@ struct produto {
 
 int main () {
 
-    int escolha, int qtdEscolha, int senha, int qtd, int voltando, int produto_repondo;;
+    int escolha;
+    int qtdEscolha;
+    int senha;
+    int qtd;
+    int voltando;
+    int produto_repondo;
     int total_vendido = 0;
     int reposicao = 0;
     double total_ira_faturar = 0;
-    double valor_total, double dinheiro, double troco;
+    double valor_total;
+    double dinheiro;
+    double troco;
     char escolha_forma_pagamento;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
@@ -139,8 +146,7 @@ int main () {
     valor_total =  produtos[1][escolha].preco_do_produto * qtdEscolha;
     cout << "O total a pagar eh: R$" << valor_total;
 
-    /*Colocar Forma de Pagamento!*/
-
+    /*Forma de Pagamento!*/
     cout << "\nQual a Forma de Pagamento? \n'A') Dindin\n'B') Cartao Credito ou Debito\n'C') Pix ";
     cin >> escolha_forma_pagamento;
 
@@ -177,8 +183,6 @@ int main () {
 
         cout << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
     }
-
-
 
 system("pause");
 return 0;
