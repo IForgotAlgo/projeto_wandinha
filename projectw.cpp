@@ -28,18 +28,11 @@ struct produto {
 
 int main () {
 
-    int escolha;
-    int qtdEscolha;
-    int senha;
-    int qtd;
-    int voltando;
+    int escolha, int qtdEscolha, int senha, int qtd, int voltando, int produto_repondo;;
     int total_vendido = 0;
-    double total_ira_faturar = 0;
     int reposicao = 0;
-    int produto_repondo;
-    double valor_total;
-    double dinheiro;
-    double troco;
+    double total_ira_faturar = 0;
+    double valor_total, double dinheiro, double troco;
     char escolha_forma_pagamento;
 
     /*Assim como o Array pode ser igualmente editado e adicionado mais produtos apenas copiando e colando!*/
