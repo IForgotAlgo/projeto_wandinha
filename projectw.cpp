@@ -1,3 +1,7 @@
+/* Dados do Estudande
+Nome: Victor Hugo Aparecido Pires 
+RA:   2840482313041
+ */
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
