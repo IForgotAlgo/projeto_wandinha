@@ -3,15 +3,15 @@
 #include <cstdlib>
 using namespace std;
 
-int modo() {
-    int senha;
+int modo_admin() {
+    int escolha_modo_admin;
     cout << "\nBem Vindo ao Modo Administrador da WandinhaMachine! ";
     cout << "\nO que deseja fazer? ";
 
     cout << "\n'1') Faturamentos \n'2') Ver Inventario Produtos contendo suas Quantidades em Un \n'3') Repor Produtos\n";
-    cin >> senha;
+    cin >> escolha_modo_admin;
 
-    return senha;
+    return escolha_modo_admin;
 }
 
 double Vem_Troco(double dinheiro, double valor) {
@@ -30,7 +30,7 @@ int main () {
 
     int escolha;
     int qtdEscolha;
-    int senha;
+    int escolha_modo_admin;
     int qtd;
     int voltando;
     int produto_repondo;
@@ -97,14 +97,14 @@ int main () {
         cout << "Entrando no Menu Secreto";
 
         do{
-        senha = modo();
+        escolha_modo_admin = modo_admin();
         
-            if (senha == 1) {
+            if (escolha_modo_admin == 1) {
                 cout << "\nO Total Faturado eh: " << total_vendido;
                 cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: R$" << total_ira_faturar << "\n"; 
                 system ("pause");
 
-            } else if (senha == 2) {
+            } else if (escolha_modo_admin == 2) {
                 cout << "\nO Total de Quantidade de Produtos eh: ";
 
                 for (int i = 1; i < 6; i++) {
