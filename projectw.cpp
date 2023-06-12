@@ -32,9 +32,9 @@ int main () {
     int qtdEscolha;
     int senha;
     int qtd;
-    int acao;
+    int voltando;
     int total_vendido = 0;
-    int total_ira_faturar = 0;
+    double total_ira_faturar = 0;
     int reposicao = 0;
     int produto_repondo;
     double valor_total;
@@ -76,7 +76,7 @@ int main () {
     produtos[1] [6].indice = 6;
     
     for (int i = 1; i < 6; i++) {
-        total_ira_faturar += (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
+        total_ira_faturar = total_ira_faturar + (produtos[1][i].preco_do_produto * produtos[1][i].quantidade_do_produto);
     }
 
     /*Pode ser Adicionado couts para montar as tabelas (ISSO SÓ EXISTE AQUI!!! NA MAQUINA ISSO NÃO EXISTIRIA)*/
@@ -92,43 +92,50 @@ int main () {
     
     cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
     cin >> escolha;
-        
+    
     if (escolha == 159753) {
         cout << "Entrando no Menu Secreto";
 
+        do{
         senha = modo();
-
-        if (senha == 1) {
-            cout << "\nO Total Faturado eh: " << total_vendido;
-            cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: " << total_ira_faturar << "\n"; 
-
-        } else if (senha == 2) {
-            cout << "\nO Total de Quantidade de Produtos eh: ";
-
-            for (int i = 1; i < 6; i++) {
-                cout << "\n" << produtos[1] [i].nome_produto;
-                cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
-            }
-
-        } else {
-            do {
-                cout << "\nDeseja Repor Qual Produto (Digite o Codigo)? ";
-                cin >> produto_repondo;
-
-                produtos[1] [produto_repondo].nome_produto;
-
-                cout << "\nQuantos Produtos deseja adicionar? \nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto << "\n";
-                cin >> reposicao;
-
-                produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
-
-                cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << " Foi reposto " << reposicao << "Un";
-                cout << "\nQuantidade Anterior: " << produtos[1] [produto_repondo].quantidade_do_produto - reposicao << "\nQuantidade Atual " << produtos[1] [produto_repondo].quantidade_do_produto;
-                cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '2')";
-                cin >> escolha;
-            } while (escolha == 1);
         
-        }
+            if (senha == 1) {
+                cout << "\nO Total Faturado eh: " << total_vendido;
+                cout << "\nO Total que a Maquina Wandinha pode Faturar Ainda eh: R$" << total_ira_faturar << "\n"; 
+                system ("pause");
+
+            } else if (senha == 2) {
+                cout << "\nO Total de Quantidade de Produtos eh: ";
+
+                for (int i = 1; i < 6; i++) {
+                    cout << "\n" << produtos[1] [i].nome_produto;
+                    cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
+                }
+                system ("pause");
+
+            } else {
+                do {
+                    cout << "\nDeseja Repor Qual Produto (Digite o Codigo)? ";
+                    cin >> produto_repondo;
+
+                    cout << "\nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto << "\nQuantos Produtos deseja adicionar? ";
+                    cin >> reposicao;
+
+                    produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
+
+                    cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << " Foi reposto " << reposicao << "Un";
+                    cout << "\nQuantidade Anterior: " << produtos[1] [produto_repondo].quantidade_do_produto - reposicao << "\nQuantidade Atual " << produtos[1] [produto_repondo].quantidade_do_produto;
+                    cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '2')";
+                    cin >> escolha;
+                } while (escolha == 1);
+            system ("pause");
+            }
+        
+        cout << "Deseja Retornar Ao Menu? \n1) Sim \n2) Nao \n";
+        cin >> voltando;
+        } while (voltando == 1);
+        system("pause");
+        exit (0);
     }
 
     cout << "Informe a Quantidade:  ";
