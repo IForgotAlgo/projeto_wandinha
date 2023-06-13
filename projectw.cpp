@@ -7,6 +7,16 @@ RA:   2840482313041
 #include <cstdlib>
 using namespace std;
 
+int correcao (int escolha, int valorA, int valorB) {
+
+    if (escolha < valorA or escolha > valorB) {
+        cout << "Insira um Valor Entre " << valorA << " e " << valorB << "\n";
+        cin >> escolha;
+        correcao(escolha, valorA, valorB);
+    }
+    return escolha;
+}
+
 int modo_admin() {
     int escolha_modo_admin;
     cout << "\nBem Vindo ao Modo Administrador da WandinhaMachine! ";
@@ -96,7 +106,8 @@ int main () {
     
     cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
     cin >> escolha;
-    
+    escolha = correcao(escolha, 1, 5);
+
     if (escolha == 159753) {
         cout << "Entrando no Menu Secreto";
 
@@ -121,22 +132,28 @@ int main () {
                 do {
                     cout << "\nDeseja Repor Qual Produto (Digite o Codigo)? ";
                     cin >> produto_repondo;
+                    produto_repondo = correcao(produto_repondo, 1, 6);
 
                     cout << "\nProduto Escolhido: " << produtos[1] [produto_repondo].nome_produto << "\nQuantos Produtos deseja adicionar? ";
                     cin >> reposicao;
+                    reposicao = correcao(reposicao, 1, 10);
 
                     produtos[1] [produto_repondo].quantidade_do_produto = reposicao + produtos[1] [produto_repondo].quantidade_do_produto;
 
                     cout << "\nO Produto " << produtos[1] [produto_repondo].nome_produto << " Foi reposto " << reposicao << "Un";
                     cout << "\nQuantidade Anterior: " << produtos[1] [produto_repondo].quantidade_do_produto - reposicao << "\nQuantidade Atual " << produtos[1] [produto_repondo].quantidade_do_produto;
-                    cout << "\nDeseja Repor outro Produto? (Sim = '1' ; Nao = '2')";
+                    cout << "\nDeseja Repor outro Produto? \n1) Sim \n2) Nao";
                     cin >> escolha;
+                    escolha = correcao(escolha, 1, 2);
+
                 } while (escolha == 1);
             system ("pause");
             }
         
-        cout << "Deseja Retornar Ao Menu? \n1) Sim \n2) Nao \n";
+        cout << "Deseja Retornar Ao Menu? \n1) Sim \n2) Nao";
         cin >> voltando;
+        voltando = correcao(voltando, 1, 2);
+
         } while (voltando == 1);
         system("pause");
         exit (0);
@@ -144,6 +161,7 @@ int main () {
 
     cout << "Informe a Quantidade:  ";
     cin >> qtdEscolha;
+    qtdEscolha = correcao(qtdEscolha, 1, 10);
 
     produtos[1][escolha].quantidade_do_produto = produtos[1][escolha].quantidade_do_produto - qtdEscolha;
 
@@ -154,9 +172,11 @@ int main () {
     cout << "\nQual a Forma de Pagamento? \n'A') Dindin\n'B') Cartao Credito ou Debito\n'C') Pix ";
     cin >> escolha_forma_pagamento;
 
+    /* Por Case*/
     if (escolha_forma_pagamento == 'B') {
         cout << "\nInsira ou Aproxime o Cartao \nCredito ou Debito?\nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
         total_vendido = (total_vendido + valor_total) + total_vendido;
+        produtos[1] [escolha].quantidade_do_produto = produtos[1] [escolha].quantidade_do_produto - qtdEscolha;
     } else if (escolha_forma_pagamento == 'C'){
         cout << "\n<QR Code> \nPagamento Efetuado\n" << qtdEscolha << " Produto(s) Caindo" << "\nObrigado :3\n";
         total_vendido = (total_vendido + valor_total) + total_vendido;
@@ -165,7 +185,7 @@ int main () {
         do {
             cout << "Insira o Dinheiro na Maquina: (Notas Compativeis: R$5,00 e R$10,00 e R$20,00 e R$50,00 e R$100,00): ";
             cin >> dinheiro;
-
+            
             cout << "\nQuantas Cedulas?: ";
             cin >> qtd;
             
