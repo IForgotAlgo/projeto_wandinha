@@ -106,7 +106,6 @@ int main () {
     
     cout << "Escolha um Produto Digitando o Codigo Abaixo do Valor: ";
     cin >> escolha;
-    escolha = correcao(escolha, 1, 5);
 
     if (escolha == 159753) {
         cout << "Entrando no Menu Secreto";
@@ -122,7 +121,7 @@ int main () {
             } else if (escolha_modo_admin == 2) {
                 cout << "\nO Total de Quantidade de Produtos eh: ";
 
-                for (int i = 1; i < 6; i++) {
+                for (int i = 1; i < 7; i++) {
                     cout << "\n" << produtos[1] [i].nome_produto;
                     cout << "\n" << produtos[1] [i].quantidade_do_produto << " Un\n";
                 }
