@@ -9,6 +9,11 @@ using namespace std;
 
 int correcao (int escolha, int valorA, int valorB) {
 
+    if (valorB < valorA) {
+        cout << "Produtos Insuficientes (Vibes)";
+        exit (0);
+    }
+
     if (escolha < valorA or escolha > valorB) {
         cout << "Insira um Valor Entre " << valorA << " e " << valorB << "\n";
         cin >> escolha;
@@ -66,7 +71,7 @@ int main () {
 
     produtos[1] [2].nome_produto = "CroaSans";
     produtos[1] [2].preco_do_produto = 10.00;
-    produtos[1] [2].quantidade_do_produto = 5;
+    produtos[1] [2].quantidade_do_produto = 0;
     produtos[1] [2].indice = 2;
 
     produtos[1] [3].nome_produto = "Banana Congelada";
@@ -160,7 +165,7 @@ int main () {
 
     cout << "Informe a Quantidade:  ";
     cin >> qtdEscolha;
-    qtdEscolha = correcao(qtdEscolha, 1, 10);
+    qtdEscolha = correcao(qtdEscolha, 1, produtos[1][escolha].quantidade_do_produto);
 
     produtos[1][escolha].quantidade_do_produto = produtos[1][escolha].quantidade_do_produto - qtdEscolha;
 
